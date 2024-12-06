@@ -15,7 +15,7 @@
     <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="{{ route('home') }}">Home</a></li>
     <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="#">Movies</a></li>
     <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="#">Reviews</a></li>
-    <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="#">About</a></li>
+    <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="{{ route('about') }}">About</a></li>
   </ul>
   {{-- <button class="btn sign-in order-3 flex-shrink-0">Sign In</button> --}}
   <a class="btn sign-in order-3 flex-shrink-0" href="{{ route('login') }}">Sign In</a>
