@@ -13,7 +13,7 @@
   </div>
   <ul class="nav-link absolute left-4 top-16 z-20 hidden min-w-[150px] items-center justify-center gap-x-6 rounded-xl bg-white px-2 py-2 ring-1 ring-slate-300 transition duration-300 md:static md:order-2 md:flex md:space-y-0 md:bg-transparent md:p-0" :class="{ 'hidden': !open, 'flex-col md:flex-row': open }">
     <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="{{ route('home') }}">Home</a></li>
-    <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="#">Movies</a></li>
+    <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="{{ route('movies') }}">Movies</a></li>
     <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="#">Reviews</a></li>
     <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="{{ route('about') }}">About</a></li>
   </ul>
