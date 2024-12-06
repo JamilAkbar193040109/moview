@@ -17,6 +17,21 @@
     <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="#">Reviews</a></li>
     <li class="rounded-md px-2 py-2 font-medium leading-none transition hover:bg-slate-400"><a class="hover:underline" href="{{ route('about') }}">About</a></li>
   </ul>
-  {{-- <button class="btn sign-in order-3 flex-shrink-0">Sign In</button> --}}
-  <a class="btn sign-in order-3 flex-shrink-0" href="{{ route('login') }}">Sign In</a>
+  <div class="order-3 font-medium">
+    @auth
+      <a class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]" href="{{ url('/dashboard') }}">
+        Dashboard
+      </a>
+    @else
+      <a class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]" href="{{ route('login') }}">
+        Sign In
+      </a>
+
+      @if (Route::has('register'))
+        <a class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]" href="{{ route('register') }}">
+          Register
+        </a>
+      @endif
+    @endauth
+  </div>
 </nav>
