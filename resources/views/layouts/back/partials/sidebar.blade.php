@@ -20,7 +20,7 @@
       <span>Genre</span>
     </a>
 
-    <a class="{{ request()->routeIs('movie.*') ? 'bg-black/10 text-neutral-900 dark:bg-indigo-600/10 dark:text-white' : '' }} flex items-center gap-3 rounded-md px-2 py-2.5 text-sm font-semibold text-neutral-600 underline-offset-2 transition hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-indigo-600/5 dark:hover:text-white" href="#">
+    <a class="{{ request()->routeIs('movie.*') ? 'bg-black/10 text-neutral-900 dark:bg-indigo-600/10 dark:text-white' : '' }} flex items-center gap-3 rounded-md px-2 py-2.5 text-sm font-semibold text-neutral-600 underline-offset-2 transition hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-indigo-600/5 dark:hover:text-white" href="{{ route('dashboard.movies.index') }}">
       <i class="fa-solid fa-film"></i>
       <span>Movies</span>
     </a>
