@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 use App\Models\Movie;
+use App\Models\Genre;
 
 class MovieController extends Controller
 {
@@ -16,7 +17,8 @@ class MovieController extends Controller
 
     public function create()
     {
-        return view('dashboard.movie.create');
+        $genres = Genre::pluck('name', 'id');
+        return view('dashboard.movie.create', compact('genres'));
     }
 
     public function store(StoreMovieRequest $request)
@@ -24,7 +26,7 @@ class MovieController extends Controller
         $data = $request->validated();
 
         $movie = Movie::create($data);
-        return to_route('movie.index');
+        return to_route('dashboard.movies.index');
     }
 
     public function show(Movie $movie)
@@ -43,13 +45,13 @@ class MovieController extends Controller
 
         $movie->update($data);
 
-        return to_route('movie.index');
+        return to_route('dashboard.movies.index');
     }
 
     public function destroy(Movie $movie)
     {
         $movie->delete();
 
-        return to_route('movie.index');
+        return to_route('dashboard.movies.index');
     }
 }

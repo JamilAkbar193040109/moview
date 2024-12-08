@@ -22,7 +22,12 @@
         </div>
         <div class="mb-6">
           <label class="text-text mb-2 block font-medium" for="genre">Genre</label>
-          <x-dashboard.text-input class="mt-1 block w-full" id="genre" name="genre" type="text" :value="old('genre')" />
+          <select class="block w-full rounded-md border border-gray-500 bg-theme-overlay text-sm dark:text-white focus:border-theme-pine focus:ring-theme-pine" id="genre" name="genre">
+            <option>Pilih Genre</option>
+            @foreach ($genres as $key => $item)
+              <option value="{{ $item }}" @selected(old('genre') == $item)>{{ $item }}</option>
+            @endforeach
+          </select>
           <x-dashboard.input-error class="mt-1" :messages="$errors->get('genre')" />
         </div>
         <div class="mb-6">

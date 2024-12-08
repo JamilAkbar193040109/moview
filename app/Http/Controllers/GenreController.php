@@ -25,7 +25,7 @@ class GenreController extends Controller
 
         Genre::create($data);
 
-        return to_route('dashboard.genre.index');
+        return to_route('dashboard.genres.index');
     }
 
     public function show(Genre $genre)
@@ -47,6 +47,6 @@ class GenreController extends Controller
     {
         $genre->delete();
 
-        return to_route('dashboard.genre.index');
+        return to_route('dashboard.genres.index');
     }
 }
