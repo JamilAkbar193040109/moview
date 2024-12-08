@@ -5,7 +5,7 @@
   <section class="movies mx-auto">
     <div class="mb-5 flex items-center justify-between">
       <h2 class="text-2xl font-semibold leading-none">List Movies</h2>
-      <a class="cursor-pointer whitespace-nowrap rounded-md bg-amber-600 px-4 py-2 text-center text-sm font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75 dark:bg-indigo-600 dark:text-white dark:focus-visible:outline-indigo-600" href="#">Tambah</a>
+      <a class="cursor-pointer whitespace-nowrap rounded-md bg-amber-600 px-4 py-2 text-center text-sm font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75 dark:bg-indigo-600 dark:text-white dark:focus-visible:outline-indigo-600" href="{{ route('dashboard.movies.create') }}">Tambah</a>
     </div>
     <!-- <div class="relative mb-3 flex w-full max-w-xs flex-col gap-1 text-neutral-600 dark:text-neutral-300">
       <i class="fa-solid fa-magnifying-glass absolute left-3 top-3"></i>
