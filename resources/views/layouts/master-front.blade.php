@@ -18,8 +18,8 @@
   </style>
 </head>
 
-<body class="flex min-h-screen flex-col font-sans antialiased">
-  <header class="sticky top-0 z-40 bg-slate-300 p-4">
+<body class="flex min-h-screen flex-col bg-modern-background font-sans antialiased">
+  <header class="sticky top-0 z-40 bg-modern-primary p-4 shadow-md">
     @include('layouts.front.partials.navbar')
   </header>
 
