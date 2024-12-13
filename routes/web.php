@@ -2,14 +2,12 @@
 
 use App\Http\Controllers\FrontMoviesController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies');
 
 Route::get('/about', function () {

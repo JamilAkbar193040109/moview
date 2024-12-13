@@ -22,29 +22,24 @@
 
   <section class="hot-movie px-4 py-10">
     <div class="mx-auto max-w-6xl">
-      <h2 class="mb-4 text-2xl font-semibold">Hot Movies</h2>
+      <h2 class="mb-8 text-center text-3xl font-bold underline underline-offset-8 md:text-4xl">Recent Movies</h2>
       <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        <div class="rounded-md p-4 ring-1 ring-slate-300 transition duration-200 hover:ring-sky-600">
-          <img class="w-full" src="https://via.placeholder.com/150x200?text=Movie+1" alt="Movie 1">
-          <h3 class="mt-2 text-lg font-semibold">Movie 1</h3>
-          <p>Genre: Action, Adventure</p>
-        </div>
-        <div class="rounded-md p-4 ring-1 ring-slate-300 transition duration-200 hover:ring-sky-600">
-          <img class="w-full" src="https://via.placeholder.com/150x200?text=Movie+2" alt="Movie 2">
-          <h3 class="mt-2 text-lg font-semibold">Movie 2</h3>
-          <p>Genre: Comedy, Drama</p>
-        </div>
-        <div class="rounded-md p-4 ring-1 ring-slate-300 transition duration-200 hover:ring-sky-600">
-          <img class="w-full" src="https://via.placeholder.com/150x200?text=Movie+3" alt="Movie 3">
-          <h3 class="mt-2 text-lg font-semibold">Movie 3</h3>
-          <p>Genre: Horror, Mystery</p>
-        </div>
-        <div class="rounded-md p-4 ring-1 ring-slate-300 transition duration-200 hover:ring-sky-600">
-          <img class="w-full" src="https://via.placeholder.com/150x200?text=Movie+4" alt="Movie 4">
-          <h3 class="mt-2 text-lg font-semibold">Movie 4</h3>
-          <p>Genre: Romance, Thriller</p>
-        </div>
+        @foreach ($movies as $movie)
+          <div class="overflow-hidden rounded-md ring-1 ring-slate-300 transition duration-200 hover:ring-sky-600">
+            <div class="h-[16.5rem] overflow-hidden md:h-[25rem]">
+              <img class="h-full w-full object-cover" src="{{ asset('storage/poster/' . $movie->poster) }}" alt="Movie 1">
+            </div>
+            <div class="p-2">
+              <h3 class="text-normal font-semibold md:text-lg">{{ $movie->judul }} ({{ $movie->tahun_rilis }})</h3>
+              <p>Genre: {{ $movie->genre }}</p>
+            </div>
+          </div>
+        @endforeach
       </div>
+      <a class="focus:shadow-outline text-dark bg-theme-foam hover:text-theme-base mx-auto mt-8 flex w-fit items-center rounded-lg px-4 py-2 text-sm leading-tight focus:outline-none active:scale-95" href="{{ route('movies') }}">
+        <i class="fa-solid fa-arrow-right pr-2"></i>
+        <span class="ml-2">See More</span>
+      </a>
     </div>
   </section>
 
