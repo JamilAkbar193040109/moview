@@ -14,6 +14,15 @@ export default {
             fontFamily: {
                 sans: ["Inter", ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                modern: {
+                    primary: "#333333",
+                    secondary: "#e63946",
+                    accent: "#f1faee",
+                    background: "#fafafa",
+                    text: "#1d3557",
+                },
+            },
         },
     },
 
