@@ -14,10 +14,10 @@
             <div class="card-body">
               <h5 class="card-title text-xl font-semibold">{{ $review->movie->judul }} ({{ $review->movie->tahun_rilis }})</h5>
               <h6 class="card-subtitle text-theme-muted mb-2 text-sm">By {{ $review->user->name }} | Rating: {{ $review->rating }}/10</h6>
-              <p class="card-text text-sm">{{ Str::limit($review->review, 150) }}</p>
+              <p class="card-text text-sm">{{ Str::limit($review->review_text, 150) }}</p>
               <div class="flex gap-x-2">
-                <a class="mt-3 block w-fit rounded-md bg-sky-600 p-2 text-sm hover:underline" href="{{ route('review.show', $review->id) }}">Read More</a>
-                <a class="text-theme-base mt-3 block w-fit rounded-md bg-yellow-500 p-2 text-sm hover:underline" href="{{ route('review.edit', $review->id) }}"><i class="fa-solid fa-pen mr-1"></i> Edit Review</a>
+                <a class="mt-3 block w-fit rounded-md bg-sky-600 p-2 text-sm hover:underline" href="{{ route('dashboard.reviews.show', $review->id) }}">Read More</a>
+                <a class="text-theme-base mt-3 block w-fit rounded-md bg-yellow-500 p-2 text-sm hover:underline" href="{{ route('dashboard.reviews.edit', $review->id) }}"><i class="fa-solid fa-pen mr-1"></i> Edit Review</a>
               </div>
             </div>
           @empty
