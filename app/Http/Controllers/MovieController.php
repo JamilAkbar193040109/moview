@@ -24,6 +24,12 @@ class MovieController extends Controller
     public function store(StoreMovieRequest $request)
     {
         $data = $request->validated();
+        if ($request->hasFile('poster')) {
+            $poster = $request->file('poster');
+            $posterName = time() . '.' . $poster->getClientOriginalExtension();
+            $poster->storeAs('poster', $posterName, 'public');
+            $data['poster'] = $posterName;
+        }
 
         $movie = Movie::create($data);
         return to_route('dashboard.movies.index');

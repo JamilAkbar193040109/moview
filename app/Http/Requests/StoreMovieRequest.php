@@ -27,7 +27,7 @@ class StoreMovieRequest extends FormRequest
             'tahun_rilis' => ['required', 'numeric'],
             'sutradara' => 'nullable',
             'sinopsis' => 'nullable',
-            'poster' => 'nullable'
+            'poster' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:5012']
         ];
     }
 }
