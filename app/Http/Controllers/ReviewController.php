@@ -26,7 +26,7 @@ class ReviewController extends Controller
         $data = $request->validated();
         $data['user_id'] = auth()->id();
         Review::create($data);
-        return to_route('dashboard.review.index')->with('success', 'Review added successfully');
+        return to_route('dashboard.reviews.index')->with('success', 'Review added successfully');
     }
 
     public function show(Review $review)
@@ -44,12 +44,12 @@ class ReviewController extends Controller
     {
         $data = $request->validated();
         $review->update($data);
-        return to_route('dashboard.review.index')->with('success', 'Review updated successfully');
+        return to_route('dashboard.reviews.index')->with('success', 'Review updated successfully');
     }
 
     public function destroy(Review $review)
     {
         $review->delete();
-        return to_route('dashboard.review.index')->with('success', 'Review deleted successfully');
+        return to_route('dashboard.reviews.index')->with('success', 'Review deleted successfully');
     }
 }
