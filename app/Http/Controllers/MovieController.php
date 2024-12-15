@@ -6,6 +6,7 @@ use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 use App\Models\Movie;
 use App\Models\Genre;
+use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
@@ -50,6 +51,16 @@ class MovieController extends Controller
     {
         $data = $request->validated();
 
+        if ($request->hasFile('poster')) {
+            if ($movie->poster) {
+                Storage::disk('public')->delete('poster/' . $movie->poster);
+            }
+            $poster = $request->file('poster');
+            $posterName = time() . '.' . $poster->getClientOriginalExtension();
+            $poster->storeAs('poster', $posterName, 'public');
+            $data['poster'] = $posterName;
+        }
+
         $movie->update($data);
 
         return to_route('dashboard.movies.index');
@@ -57,6 +68,9 @@ class MovieController extends Controller
 
     public function destroy(Movie $movie)
     {
+        if ($movie->poster) {
+            Storage::disk('public')->delete('poster/' . $movie->poster);
+        }
         $movie->delete();
 
         return to_route('dashboard.movies.index');
