@@ -26,6 +26,7 @@
                   <i class="fa-solid fa-star cursor-pointer text-2xl" x-on:click="rating = {{ $i }}" x-on:mouseover="hover = {{ $i }}" x-on:mouseout="hover = 0" :class="(rating >= {{ $i }} && rating != 0) || hover >= {{ $i }} ? 'text-yellow-500' : 'text-gray-300'"></i>
                 @endfor
               </div>
+              <p class="mt-4"><span x-text="rating"></span>/10</p>
               <input name="rating" type="hidden" x-bind:value="rating">
             </div>
             <x-dashboard.input-error class="mt-1" :messages="$errors->get('rating')" />
