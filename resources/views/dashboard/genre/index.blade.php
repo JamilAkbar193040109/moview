@@ -1,33 +1,34 @@
 @extends('layouts.back.master-back')
 
+@section('title', 'List Genre')
 @section('content')
   <section class="genres mx-auto">
     <div class="mb-5 flex items-center justify-between">
       <h2 class="text-2xl font-semibold leading-none">List Genre</h2>
-      <a class="cursor-pointer whitespace-nowrap rounded-md bg-amber-600 px-4 py-2 text-center text-sm font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75 dark:bg-indigo-600 dark:text-white dark:focus-visible:outline-indigo-600" href="{{ route('dashboard.genres.create') }}">Tambah</a>
+      <a class="cursor-pointer whitespace-nowrap rounded-md bg-amber-600 px-4 py-2 text-center text-sm font-semibold tracking-wide text-white transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75 dark:bg-indigo-600 dark:text-white dark:focus-visible:outline-indigo-600" href="{{ route('dashboard.genres.create') }}"><i class="fa-solid fa-plus mr-1 text-sm"></i> Tambah</a>
     </div>
-    <div class="card overflow-x-auto rounded-lg bg-theme-overlay p-4">
-      <div class="search float-end">
-        <input class="mb-3 mt-1 w-40 rounded-md border border-theme-subtle bg-theme-overlay px-2 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-theme-pine" name="search" type="search" placeholder="Cari...">
-      </div>
-      <table class="text-text w-full min-w-max table-auto overflow-x-scroll text-sm">
-        <thead>
-          <tr class="border-b">
-            <th class="p-2 text-left">No.</th>
-            <th class="p-2 text-left">Nama Genre</th>
-            <th class="p-2 text-left">Action</th>
+    <div class="w-full overflow-hidden overflow-x-auto rounded-md border border-neutral-300 dark:border-neutral-700">
+      <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
+        <thead class="border-b border-neutral-300 bg-neutral-50 text-sm text-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white">
+          <tr>
+            <th class="p-4" scope="col">No.</th>
+            <th class="p-4" scope="col">Nama Genre</th>
+            <th class="p-4" scope="col">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
           @forelse ($genres as $genre)
-            <tr class="even:bg-theme-muted/5 hover:bg-theme-muted/10">
-              <td class="px-2 py-2">{{ $loop->iteration }}</td>
-              <td class="px-2 py-2">{{ $genre->name }}</td>
-              <td class="py-2">
+            <tr>
+              <td class="p-4">{{ $loop->iteration }}</td>
+              <td class="p-4">{{ $genre->name }}</td>
+              <td class="flex gap-1 p-4">
+                <a class="size-7 focus:shadow-outline flex items-center justify-center rounded-lg px-2 py-1 text-sm leading-tight focus:outline-none active:scale-95" href="{{ route('dashboard.genres.edit', $genre->id) }}" title="Edit">
+                  <i class="fa-solid fa-pen"></i>
+                </a>
                 <form action="{{ route('dashboard.genres.destroy', $genre->id) }}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button class="focus:shadow-outline rounded-lg bg-red-500 px-2 py-1 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none" type="submit" title="Delete">
+                  <button class="size-7 focus:shadow-outline flex items-center justify-center rounded-lg px-2 py-1 text-sm leading-tight text-white focus:outline-none active:scale-95" type="submit" title="Delete">
                     <i class="fa-solid fa-trash"></i>
                   </button>
                 </form>
@@ -35,7 +36,7 @@
             </tr>
           @empty
             <tr>
-              <td class="p-2 text-center" colspan="3">Data Kosong</td>
+              <td class="p-4 text-center" colspan="7">Data Kosong</td>
             </tr>
           @endforelse
         </tbody>
