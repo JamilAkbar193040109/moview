@@ -35,12 +35,16 @@ class GenreController extends Controller
 
     public function edit(Genre $genre)
     {
-        //
+        return view('dashboard.genre.edit', compact('genre'));
     }
 
     public function update(UpdateGenreRequest $request, Genre $genre)
     {
-        //
+        $data = $request->validated();
+
+        $genre->update($data);
+
+        return to_route('dashboard.genres.index');
     }
 
     public function destroy(Genre $genre)
