@@ -18,8 +18,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
-    Route::resource('movies', MovieController::class);
-    Route::resource('genres', GenreController::class);
+    Route::resource('movies', MovieController::class)->middleware('can:admin');
+    Route::resource('genres', GenreController::class)->middleware('can:admin');
     Route::resource('reviews', ReviewController::class);
 });
 
