@@ -6,6 +6,7 @@ use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Models\Movie;
 use App\Models\Review;
+use Illuminate\Support\Facades\Gate;
 
 class ReviewController extends Controller
 {
@@ -40,12 +41,14 @@ class ReviewController extends Controller
 
     public function edit(Review $review)
     {
+        Gate::authorize('edit-review', $review);
         $movies = Movie::get(['judul', 'id']);
         return view('dashboard.review.edit', compact('review', 'movies'));
     }
 
     public function update(UpdateReviewRequest $request, Review $review)
     {
+        Gate::authorize('edit-review', $review);
         $data = $request->validated();
         $review->update($data);
         return to_route('dashboard.reviews.index')->with('success', 'Review updated successfully');
@@ -53,6 +56,7 @@ class ReviewController extends Controller
 
     public function destroy(Review $review)
     {
+        Gate::authorize('edit-review', $review);
         $review->delete();
         return to_route('dashboard.reviews.index')->with('success', 'Review deleted successfully');
     }
