@@ -11,7 +11,11 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Review::with(['user', 'movie'])->latest()->paginate(6);
+        if (auth()->user()->role == 'admin') {
+            $reviews = Review::with(['user', 'movie'])->latest()->paginate(6);
+        } else {
+            $reviews = Review::with(['user', 'movie'])->where('user_id', auth()->id())->latest()->paginate(6);
+        }
         return view('dashboard.review.index', compact('reviews'));
     }
 
