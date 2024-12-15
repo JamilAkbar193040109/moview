@@ -42,7 +42,8 @@ class MovieController extends Controller
 
     public function edit(Movie $movie)
     {
-        return view('dashboard.movie.edit', compact('movie'));
+        $genres = Genre::pluck('name', 'id');
+        return view('dashboard.movie.edit', compact('movie', 'genres'));
     }
 
     public function update(UpdateMovieRequest $request, Movie $movie)
