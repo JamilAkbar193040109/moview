@@ -28,7 +28,7 @@
                 <form action="{{ route('dashboard.genres.destroy', $genre->id) }}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button class="size-7 focus:shadow-outline flex items-center justify-center rounded-lg px-2 py-1 text-sm leading-tight text-white focus:outline-none active:scale-95" type="submit" title="Delete">
+                  <button class="size-7 focus:shadow-outline flex items-center justify-center rounded-lg px-2 py-1 text-sm leading-tight focus:outline-none active:scale-95" type="submit" title="Delete">
                     <i class="fa-solid fa-trash"></i>
                   </button>
                 </form>
