@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontMoviesController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
@@ -13,9 +14,7 @@ Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies');
 
 Route::get('/about', fn() => view('about'))->name('about');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::resource('movies', MovieController::class)->middleware('can:admin');
