@@ -11,11 +11,14 @@
       </svg>
     </button>
   </div>
-  <ul class="absolute left-4 top-full z-50 mt-2 w-56 origin-top-left scale-0 divide-y divide-gray-500 rounded-md bg-modern-primary p-2 text-white opacity-0 shadow-lg transition duration-300 ease-in-out md:static md:top-0 md:order-2 md:mt-0 md:flex md:w-auto md:scale-100 md:items-center md:justify-center md:gap-x-4 md:divide-none md:p-0 md:opacity-100 md:shadow-none" x-cloak :class="{ 'scale-100 opacity-100': navbarIsOpen, 'scale-0 opacity-0': !navbarIsOpen }">
+  <ul class="bg-modern-primary absolute left-4 top-full z-50 mt-2 w-56 origin-top-left scale-0 divide-y divide-gray-500 rounded-md p-2 text-white opacity-0 shadow-lg transition duration-300 ease-in-out md:static md:top-0 md:order-2 md:mt-0 md:flex md:w-auto md:scale-100 md:items-center md:justify-center md:gap-x-4 md:divide-none md:p-0 md:opacity-100 md:shadow-none" x-cloak :class="{ 'scale-100 opacity-100': navbarIsOpen, 'scale-0 opacity-0': !navbarIsOpen }">
     <li class="{{ request()->is('/') ? 'bg-amber-400 text-black' : '' }} font-medium leading-none tracking-wide"><a class="block px-2 py-3 transition ease-in-out hover:bg-black/40 md:px-3" href="{{ route('home') }}">Home</a></li>
     <li class="{{ request()->is('movies*') ? 'bg-amber-400 text-black' : '' }} font-medium leading-none tracking-wide"><a class="block px-2 py-3 transition ease-in-out hover:bg-black/40 md:px-3" href="{{ route('movies') }}">Movies</a></li>
     <li class="{{ request()->is('about') ? 'bg-amber-400 text-black' : '' }} font-medium leading-none tracking-wide"><a class="block px-2 py-3 transition ease-in-out hover:bg-black/40 md:px-3" href="{{ route('about') }}">About</a></li>
   </ul>
-  {{-- <button class="btn sign-in order-3 flex-shrink-0">Sign In</button> --}}
-  <a class="btn sign-in order-3 flex-shrink-0 bg-modern-secondary hover:bg-modern-secondary/75 px-3 py-2 rounded-full text-white" href="{{ route('login') }}">Sign In</a>
+  @auth
+    <a class="btn bg-modern-secondary hover:bg-modern-secondary/75 order-3 flex-shrink-0 rounded-full px-3 py-2 text-white" href="{{ route('dashboard') }}">Dashboard</a>
+  @else
+    <a class="btn sign-in bg-modern-secondary hover:bg-modern-secondary/75 order-3 flex-shrink-0 rounded-full px-3 py-2 text-white" href="{{ route('login') }}">Sign In</a>
+  @endauth
 </nav>
