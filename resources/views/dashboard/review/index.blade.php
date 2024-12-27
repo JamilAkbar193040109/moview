@@ -16,7 +16,7 @@
               <h6 class="card-subtitle text-theme-muted mb-2 text-sm">By {{ $review->user->name }} | Rating: {{ $review->rating }}/10</h6>
               <p class="card-text text-sm">{{ Str::limit($review->review_text, 150) }}</p>
               <div class="flex gap-x-2">
-                <a class="mt-3 block w-fit rounded-md bg-sky-600 p-2 text-sm hover:underline" href="{{ route('dashboard.reviews.show', $review->id) }}">Read More</a>
+                <a class="mt-3 block w-fit rounded-md bg-sky-600 p-2 text-sm hover:underline" href="#">Read More</a>
                 <a class="text-modern mt-3 block w-fit rounded-md bg-yellow-500 p-2 text-sm hover:underline" href="{{ route('dashboard.reviews.edit', $review->id) }}"><i class="fa-solid fa-pen mr-1"></i></a>
                 <form action="{{ route('dashboard.reviews.destroy', $review->id) }}" method="post">
                   @csrf

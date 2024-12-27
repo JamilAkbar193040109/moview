@@ -12,4 +12,17 @@ class FrontMoviesController extends Controller
         $movies = Movie::all();
         return view('movies', compact('movies'));
     }
+
+    public function show(Movie $movie)
+    {
+        $movie->load('reviews');
+        return view('detail-movie', compact('movie'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $movies = Movie::where('judul', 'like', '%' . $query . '%')->get();
+        return response()->json($movies);
+    }
 }

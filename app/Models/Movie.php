@@ -18,4 +18,9 @@ class Movie extends Model
         'sinopsis',
         'poster',
     ];
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
