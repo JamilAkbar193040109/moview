@@ -1,7 +1,7 @@
 @extends('layouts.master-front')
 
 @section('content')
-  <section class="hero bg-gradient-to-b from-modern-accent to-transparent px-4 py-10 md:py-20 xl:px-0">
+  <section class="hero from-modern-accent bg-gradient-to-b to-transparent px-4 py-10 md:py-20 xl:px-0">
     <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-y-4 md:flex-row">
       <div>
         <h1 class="mb-2 text-5xl font-bold md:mb-4 md:text-6xl">Welcome to <br><span class="text-sky-600">Moview!</span></h1>
@@ -37,7 +37,7 @@
           </a>
         @endforeach
       </div>
-      <a class="focus:shadow-outline text-dark bg- mx-auto mt-8 flex w-fit items-center rounded-lg px-4 py-2 text-sm leading-tight hover:text-theme-base focus:outline-none active:scale-95" href="{{ route('movies') }}">
+      <a class="focus:shadow-outline text-dark bg- hover:text-theme-base mx-auto mt-8 flex w-fit items-center rounded-lg px-4 py-2 text-sm leading-tight focus:outline-none active:scale-95" href="{{ route('movies') }}">
         <i class="fa-solid fa-arrow-right pr-2"></i>
         <span class="ml-2 hover:underline">See More</span>
       </a>
@@ -49,7 +49,7 @@
       <h2 class="mb-8 text-center text-3xl font-bold md:text-4xl">Recent Reviews</h2>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($reviews as $review)
-          <div class="rounded-md bg-modern-accent p-4">
+          <div class="bg-modern-accent rounded-md p-4">
             <h3 class="text-lg font-semibold">{{ $review->movie->judul }} ({{ $review->movie->tahun_rilis }})</h3>
             <div class="mb-3 flex items-center gap-4">
               <p class="text-sm">
@@ -76,33 +76,3 @@
     </div>
   </section>
 @endsection
-
-@push('scripts')
-  <script>
-    const slider = document.querySelector('.slider');
-    const slides = document.querySelectorAll('.slider > div');
-    let currentIndex = 0;
-    const slideInterval = 3000; // Change slide every 3 seconds
-
-    function updateSlider() {
-      const offset = -currentIndex * 100;
-      slider.style.transform = `translateX(${offset}%)`;
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateSlider();
-    }
-
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateSlider();
-    }
-
-    document.getElementById('next').addEventListener('click', nextSlide);
-    document.getElementById('prev').addEventListener('click', prevSlide);
-
-    // Auto slide functionality
-    setInterval(nextSlide, slideInterval);
-  </script>
-@endpush
